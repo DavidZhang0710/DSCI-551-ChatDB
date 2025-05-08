@@ -13,7 +13,8 @@ db = Database(host="localhost",
               user="root",
               password="Root",
               databases=["project551_usc_courses", "project551_hospital_ratings", "project551_movie_rental"])
-client = MongoClient("mongodb+srv://your_url/?appName=Cluster0")
+# client = MongoClient("mongodb+srv://your_url/?appName=Cluster0")
+client = MongoClient("your_mongodb_connection_url")
 users_collection = client["551-project"]["user"]
 llm_api = LLM()
 
