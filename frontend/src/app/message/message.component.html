@@ -1,0 +1,49 @@
+<div class="d-flex flex-column">
+    <div class="message-card d-flex flex-column"
+        [ngClass]="[
+        message.sender === 'user' ? 'user-message' : 'bot-message',
+        message.danger ? 'danger-message' : ''
+        ]">
+
+        <p class="message-content">{{ message.text }}</p>
+
+        <button type="button" class="btn btn-primary w-100 detail-btn" data-bs-toggle="modal"
+            [attr.data-bs-target]="'#messageModal' + message.id"
+            *ngIf="message.isDetailVisible">
+            View Detail
+        </button>
+    </div>
+
+    <div class="modal fade" [id]="'messageModal' + message.id" tabindex="-1"
+        [attr.aria-labelledby]="'messageModalLabel' + message.id" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="d-flex align-items-center">
+                        <div class="ms-3 d-flex flex-column justify-content-center">
+                            <h5 class="modal-title mb-1" [id]="'messageModalLabel' + message.id">
+                                SQL Execution Details
+                            </h5>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <h6 class="fw-bold text-primary">Target Database</h6>
+                        <p class="form-control">{{ message.hiddenContent.database.slice(11) }}</p>
+                    </div>
+                    <div class="mb-3">
+                        <h6 class="fw-bold text-primary">SQL Query</h6>
+                        <p class="form-control" style="white-space: pre-line; word-break: break-word;">{{ message.hiddenContent.query }}</p>
+                    </div>
+                    <div>
+                        <h6 class="fw-bold text-success">Result</h6>
+                        <p class="form-control" style="white-space: pre-line; word-break: break-word;">{{ message.hiddenContent.result }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

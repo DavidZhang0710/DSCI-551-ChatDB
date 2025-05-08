@@ -1,0 +1,8 @@
+.database-container {
+    width: 90%;
+    max-width: 1500px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

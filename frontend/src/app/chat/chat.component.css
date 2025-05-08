@@ -1,0 +1,24 @@
+.chat-container {
+    width: 90%;
+    max-width: 1500px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.chat-box {
+    display: flex;
+    flex-direction: column-reverse;
+    min-height: 150px;
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.input-group {
+    display: flex;
+}
+  

@@ -1,0 +1,27 @@
+<nav class="navbar navbar-md pe-2">
+  <div class="container-fluid">
+    <div class="navbar-brand d-flex align-items-center">
+      ChatDB
+    </div>
+
+    <div class="navdiv ms-auto">
+      <ul class="nav">
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <a class="nav-link navclass" routerLink="/chat" routerLinkActive="active">Chat</a>
+        </li>
+
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <a class="nav-link navclass" routerLink="/database" routerLinkActive="active">Database</a>
+        </li>
+
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <a class="nav-link navclass" (click)="onLogout()">Log out</a>
+        </li>
+
+        <li class="nav-item" *ngIf="!isLoggedIn">
+          <a class="nav-link navclass" routerLink="/auth" routerLinkActive="active">Log in</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

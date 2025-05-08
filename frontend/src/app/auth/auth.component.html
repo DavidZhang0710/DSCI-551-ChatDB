@@ -1,0 +1,77 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-4">
+        <div class="card">
+          <div class="card-header text-center">
+            <h4>Login</h4>
+          </div>
+          <div class="card-body">
+            <form (ngSubmit)="onSubmit()" #authForm="ngForm">
+              <div class="mb-3">
+                <label for="user" class="form-label">User</label>
+                <div class="input-group">
+                  <input
+                    type="text"
+                    id="user"
+                    class="form-control"
+                    placeholder="Enter your user"
+                    [(ngModel)]="user"
+                    (ngModelChange)="onInputChange()"
+                    name="user"
+                    required
+                    #userModel="ngModel"
+                    [ngClass]="{'is-invalid': userModel.invalid && userModel.touched}"
+                  />
+                  <span class="input-group-text bg-danger text-white" *ngIf="userModel.invalid && userModel.touched">
+                    <i class="bi bi-exclamation-circle"></i>
+                  </span>
+                </div>
+              
+                <div *ngIf="userModel.invalid && userModel.touched" class="text-danger mt-1">
+                  Username is required.
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <div class="input-group">
+                  <input
+                    type="password"
+                    id="password"
+                    class="form-control"
+                    placeholder="Enter your password"
+                    [(ngModel)]="password"
+                    (ngModelChange)="onInputChange()"
+                    name="password"
+                    required
+                    minlength="6"
+                    #passwordModel="ngModel"
+                    [ngClass]="{'is-invalid': passwordModel.invalid && passwordModel.touched}"
+                  />
+                  <span class="input-group-text bg-danger text-white" *ngIf="passwordModel.invalid && passwordModel.touched">
+                    <i class="bi bi-exclamation-circle"></i>
+                  </span>
+                </div>
+              
+                <div *ngIf="passwordModel.invalid && passwordModel.touched" class="text-danger mt-1">
+                  <div *ngIf="passwordModel.errors?.['required']">Password is required.</div>
+                  <div *ngIf="passwordModel.errors?.['minlength']">Password must be at least 6 characters.</div>
+                </div>
+              
+                <div *ngIf="loginFailError" class="text-danger">
+                  {{ loginFailError }}
+                </div>
+              </div>
+  
+              <div class="mb-3 text-center">
+                <button type="submit" class="btn btn-primary w-100" [disabled]="!authForm.form.valid">
+                  Login
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

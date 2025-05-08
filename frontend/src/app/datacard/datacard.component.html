@@ -1,0 +1,22 @@
+<div class="card my-2">
+  <div class="card-header d-flex justify-content-between align-items-center" (click)="toggleExpand()" style="cursor: pointer;">
+    <h5 class="mb-0">{{ tableName }}</h5>
+    <span [class.rotate]="expanded" class="transition">&#9660;</span>
+  </div>
+  <div [id]="tableName" [ngClass]="{ 'collapse': true, 'show': expanded }" class="card-body">
+    <table class="table table-bordered table-sm table-hover">
+      <thead class="table-light">
+        <tr>
+          <th *ngFor="let column of columns">{{ column }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of rows">
+          <td *ngFor="let column of columns; let i = index">
+            {{ row[i] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
